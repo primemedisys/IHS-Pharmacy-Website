@@ -1,13 +1,16 @@
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { siteConfig } from "@/config/site";
 import { AppProviders } from "@/providers/AppProviders";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+// Self-hosted (variable, latin subset) so production builds never depend on
+// fonts.googleapis.com.
+const plusJakartaSans = localFont({
+  src: "../assets/fonts/PlusJakartaSans.woff2",
   variable: "--font-plus-jakarta-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: "400 800",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
